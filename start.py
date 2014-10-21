@@ -19,10 +19,7 @@ def main():
 
     command_arguments=[]
     numarguments = len(sys.argv)  
-    
-    print(numarguments)
-    print(int(sys.argv[5])+6)
-    
+        
     if ((numarguments==int(sys.argv[5])+ 6)):
         print("shere")
         for arg in sys.argv:
@@ -51,8 +48,7 @@ def main():
                 
 
             elif (sys.argv[1] == 'I'):
-                #averageframes, thoroughput_instance, seed = startatrial.instancetrial(sys.argv, seed)
-                print("I")
+                delay_instance, thoroughput_instance, seed = slottedalohaexponential.instancetrial(sys.argv, seed)
 
             elif (sys.argv[1] == 'B'):
                 delay_instance, thoroughput_instance, seed = slottedalohaexponential.instancetrial(sys.argv, seed)

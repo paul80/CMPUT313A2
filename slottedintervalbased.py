@@ -16,8 +16,7 @@ def findaspot(node, currentslot, highestslot, allslots, numstations):
     
     #forgot to do a random slot
     while (keepgoing):
-        adder = 2**exponent
-        adder = random.randint(1,adder+1)
+        adder = random.randint(1,numstations+1)
         generated = generated + 1
         delay = generateframe.delaycounter(currentslot,currentslot+adder) + delay       
         

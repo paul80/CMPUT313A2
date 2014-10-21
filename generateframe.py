@@ -1,8 +1,12 @@
+import random
+
+
+
 def generateframe(probability,Seed):
     #random.seed(Seed)
     generated = random.random()
     
-    if (generated<probability):
+    if (generated<=probability):
         return True
     else:
         return False

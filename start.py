@@ -1,3 +1,9 @@
+import sys
+import argparse
+import statsandprint
+import slottedalohaexponential
+import generateframe
+
 def main():
    
     #like this
@@ -14,7 +20,11 @@ def main():
     command_arguments=[]
     numarguments = len(sys.argv)  
     
+    print(numarguments)
+    print(int(sys.argv[5])+6)
+    
     if ((numarguments==int(sys.argv[5])+ 6)):
+        print("shere")
         for arg in sys.argv:
             command_arguments.append(arg)                        
 
@@ -27,19 +37,26 @@ def main():
         
 
         for testinstance in range(0, int(sys.argv[5])):
-            seed = int(sys.argv[5+testinstance+1])
+            seed = int(sys.argv[4+testinstance+1])
 
+            print("Loading")
             if (sys.argv[1] == 'T'):
                 #averageframes, thoroughput_instance, seed = startatrial.instancetrial(sys.argv, seed)
+                print("T")
+                
             
             elif (sys.argv[1] == 'P'):
                 #averageframes, thoroughput_instance, seed = startatrial.instancetrial(sys.argv, seed)
+                print("P")
+                
 
             elif (sys.argv[1] == 'I'):
                 #averageframes, thoroughput_instance, seed = startatrial.instancetrial(sys.argv, seed)
+                print("I")
 
             elif (sys.argv[1] == 'B'):
                 delay_instance, thoroughput_instance, seed = slottedalohaexponential.instancetrial(sys.argv, seed)
+                
             
             else:
                 print("Something went wrong")
@@ -49,7 +66,7 @@ def main():
             thoroughput_container.append(thoroughput_instance)
             seed_instance_container.append(seed)
 
-        #statsandprint.getandprintstats(averageframecounter, thoroughput_container, seed_instance_container, sys.argv[1:])
+        statsandprint.getandprintstats(delay_container, thoroughput_container, seed_instance_container, sys.argv[1:])
         
         #stats.getandprintstats(averageframecounter, thoroughput_container, seed_instance_container, sys.argv[1:])
         

@@ -1,3 +1,9 @@
+import start
+import random
+import math
+import generateframe
+
+
 
 def findaspot(node, currentslot, highestslot, allslots):
     #exponential backoff
@@ -15,8 +21,15 @@ def findaspot(node, currentslot, highestslot, allslots):
         generated = generated + 1
         delay = generateframe.delaycounter(currentslot,currentslot+adder) + delay       
         
-        if (node not in allslots[currentslot+adder]):
-            return currentslot+adder, generated, delay
+        #if currentslot < 50:
+            #print(len(allslots),(currentslot),(adder), node)
+        
+        here = currentslot+adder
+        if (here > 50000):
+            here = 50000
+            
+        if (node not in allslots[here]):
+            return here, generated, delay
         
         elif (currentslot+adder>highestslot):
             return 0, generated, delay
@@ -52,8 +65,8 @@ def instancetrial(sysargv, seed):
         #within each slot we generate frame for each slot
         for iternode in range(1,int(sysargv[2])+1):
             #print("generate stuff")
-            boolgenerate = generateframe.generateframe(sysargv[3],seed)
-            
+            boolgenerate = generateframe.generateframe(float(sysargv[3]),seed)
+                        
             if (boolgenerate==True):
                 #print("if pass append to nodeinslot")                
                 nodesinslot.append(iternode)
@@ -67,7 +80,8 @@ def instancetrial(sysargv, seed):
             
             for collidednodeiter in nodesinslot:
                 #print("find a new spot for each collided part")
-                slotnumber, createdframes, delay = findaspot(collidednodeiter, iterslot, int(sysargv[4]), allslots)
+                slotnumber, createdframes, delay = findaspot(collidednodeiter, iterslot, int(sysargv[4]), Allslots)
+                #print(slotnumber)
                 Allslots[slotnumber].append(collidednodeiter)
                 generatedframe = generatedframe + createdframes
                 totaldelay = totaldelay + delay
@@ -87,7 +101,7 @@ def instancetrial(sysargv, seed):
             
     delayinstance = totaldelay/successfullytransmitted
     throughputinstance = successfullytransmitted/numberslots
-    return delay_instance, thoroughput_instance, seed
+    return delayinstance, throughputinstance, seed
             
         
             

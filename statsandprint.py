@@ -67,5 +67,5 @@ def getandprintstats(arrayofdelay,array_of_thoroughput, array_of_seeds, array_of
         contain = contain + x + " "
     print(contain)
 
-    print("Delay Avg stats:"+str(Delayavg)+" "+"("+ str(Delayc1)+ "," + str(Delayc1)+")")
+    print("Delay Avg stats:"+str(Delayavg)+" "+"("+ str(Delayc1)+ "," + str(Delayc2)+")")
     print("Thoroughput stats: "+str(Thoroughputavg)+" "+"("+ str(Thoroughc1)+ "," + str(Thoroughc2)+")")

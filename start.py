@@ -29,7 +29,7 @@ def main():
     numarguments = len(sys.argv)  
         
     if ((numarguments==int(sys.argv[5])+ 6)):
-        print("shere")
+        #print("shere")
         for arg in sys.argv:
             command_arguments.append(arg)                        
 
@@ -44,7 +44,7 @@ def main():
         for testinstance in range(0, int(sys.argv[5])):
             seed = int(sys.argv[4+testinstance+1])
 
-            print("Loading")
+            print("Loading,please be patient")
             if (sys.argv[1] == 'T'):
                 delay_instance, thoroughput_instance, seed = time_division.time_division_multiplexing(int(sys.argv[2]),int(sys.argv[4]),float(sys.argv[3]),seed)
                 

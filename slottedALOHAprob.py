@@ -102,6 +102,15 @@ def slotted_ALOHA_prob_backoff(stations,slots,probability,seed):
             frames_transmitted+=1
             total_delay+=frame_queues_delay[stations_transmitting[0]].pop(0)
             stations_transmitting=[]
+            
+            #if station queue isn't empty, increment delay for all frames in its queue
+            count=0
+            while count<stations:
+                delay_queue= frame_queues_delay[count]
+                for i in range(len(delay_queue)):
+                    delay_queue[i]=delay_queue[i]+1
+                frame_queues_delay[count]=delay_queue
+                count+=1               
         
         #If more than one station is transmitting, there is gonna be a collision
         #Add the station to the backoff_stations list and don't pop the frames out
@@ -113,6 +122,7 @@ def slotted_ALOHA_prob_backoff(stations,slots,probability,seed):
             stations_transmitting=[]
             
             #Additional code here
+            #if station queue isn't empty, increment delay for all frames in its queue
             
             count=0
             while count<stations:
